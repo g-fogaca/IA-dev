@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # importando dataset
-df = pd.read_csv(r"C:\Users\gabfo\OneDrive\Documentos\Programação\FEA dev\IA dev\Housing Project\housing.csv")
+df = pd.read_csv("housing.csv")
 df.info()
 features = df.values
 
