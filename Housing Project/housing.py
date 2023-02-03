@@ -1,20 +1,27 @@
 # importando bibliotecas
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # importando dataset
-df = pd.read_csv(r"C:\Users\gabfo\OneDrive\Documentos\Programação\FEA dev\IA dev\Housing Project\housing.csv")
+df = pd.read_csv(r"C:\\Users\\gabfo\\OneDrive\\Documentos\\Programação\\FEA dev\\IA dev\Housing Project\housing.csv")
 df.info()
 features = df.values
 
 #%%
+# funções
+def plot(df,x,y,hue=None):
+    sns.set_style("whitegrid")
+    plt.figure(figsize=(5,5))
+    sns.scatterplot(data=df, x=x, y=y, hue=hue)
+    plt.show()
+    
+def boxplot(df,x,y):
+    sns.boxplot(data=df, x=x, y=y, showfliers=False)
+    plt.show()
+
 # visualizando
-plt.figure(figsize=(5,5))
-plt.style.use("ggplot")
-plt.scatter(df["Longitude"], df["Latitude"], alpha=0.5, c=df["MedInc"])
-plt.xlabel("Longitude")
-plt.ylabel("Latitude")
-plt.show()
+plot(df,"Longitude", "Latitude")
 
 #%%
 # normalizando os dados
@@ -52,18 +59,18 @@ for k in range(1,7):
     kmeans.fit(features_1)
     labels = kmeans.predict(features_1)
     
-    df['Region'] = labels
+    df['Region'] = labels.astype(str)
 
-    plt.figure(figsize=(5,5))
-    plt.style.use("ggplot")
-    plt.scatter(df["Longitude"], df["Latitude"], alpha=0.5, c=df["Region"])
-    plt.title(f'{k} clusters')
-    plt.xlabel("Longitude")
-    plt.ylabel("Latitude")
-    plt.show()
+    plot(df,"Longitude", "Latitude", "Region")
 
-del k, kmeans, labels, features, features_1
+del k, kmeans, labels, features
 
 #%%
-df.boxplot("MedHouseVal", "Region")
-plt.show()
+for k in range(1,7):
+    kmeans = KMeans(n_clusters = k)
+    kmeans.fit(features_1)
+    labels = kmeans.predict(features_1)
+    
+    df['Region'] = labels.astype(str)
+
+    boxplot(df, "Region", "MedHouseVal")
