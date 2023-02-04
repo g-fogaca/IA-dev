@@ -42,7 +42,7 @@ features_1 = normalized_features[:,[0,6,7]]
 # testando número de clusters
 inertias = []
 for k in range(1,11):
-    kmeans = KMeans(n_clusters = k)
+    kmeans = KMeans(n_clusters = k, random_state=(0))
     kmeans.fit(features_1)
     inertias.append(kmeans.inertia_)
 
@@ -55,7 +55,7 @@ del inertias, k, kmeans
 
 #%%
 for k in range(1,7):
-    kmeans = KMeans(n_clusters = k)
+    kmeans = KMeans(n_clusters = k, random_state=(0))
     kmeans.fit(features_1)
     labels = kmeans.predict(features_1)
     
@@ -67,7 +67,7 @@ del k, kmeans, labels, features
 
 #%%
 for k in range(1,7):
-    kmeans = KMeans(n_clusters = k)
+    kmeans = KMeans(n_clusters = k, random_state=(0))
     kmeans.fit(features_1)
     labels = kmeans.predict(features_1)
     

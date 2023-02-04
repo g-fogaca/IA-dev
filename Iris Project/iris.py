@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 
 # Importando e visualizando dados
 df = sns.load_dataset("iris")
-sns.scatterplot(data = df, x='sepal_length', y='petal_length', hue="species")
+sns.scatterplot(data = df, x='petal_width', y='petal_length', hue="species")
 plt.show()
 
 #%%
 # visualizando dados sem categorias
-sns.scatterplot(data = df, x='sepal_length', y='petal_length')
+sns.scatterplot(data = df, x='petal_width', y='petal_length')
 plt.show()
 
 #%%
@@ -34,7 +34,7 @@ labels = kmeans.predict(normalized_features)
 
 #%%
 # visualizando
-sns.scatterplot(data=df, x='sepal_length', y='petal_length', hue=labels.astype(str))
+sns.scatterplot(data=df, x='petal_width', y='petal_length', hue=labels.astype(str))
 plt.show()
 
 #%%
@@ -43,7 +43,7 @@ for k in range(1,5):
     kmeans.fit(features)
     labels = kmeans.predict(features)
 
-    sns.scatterplot(data=df, x='sepal_length', y='petal_length', hue=labels.astype(str))
+    sns.scatterplot(data=df, x='petal_width', y='petal_length', hue=labels.astype(str))
     plt.show()
 
 del k, kmeans
