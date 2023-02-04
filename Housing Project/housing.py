@@ -4,11 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # importando dataset
-<<<<<<< HEAD
-df = pd.read_csv(r"C:\\Users\\gabfo\\OneDrive\\Documentos\\Programação\\FEA dev\\IA dev\Housing Project\housing.csv")
-=======
 df = pd.read_csv("housing.csv")
->>>>>>> e1a632394b5a4d3aea79acf3fadab97f8fa82a82
 df.info()
 features = df.values
 
@@ -70,7 +66,6 @@ for k in range(1,7):
 del k, kmeans, labels, features
 
 #%%
-<<<<<<< HEAD
 for k in range(1,7):
     kmeans = KMeans(n_clusters = k, random_state=(0))
     kmeans.fit(features_1)
@@ -79,7 +74,3 @@ for k in range(1,7):
     df['Region'] = labels.astype(str)
 
     boxplot(df, "Region", "MedHouseVal")
-=======
-df.boxplot("MedHouseVal", "Region")
-plt.show()
->>>>>>> e1a632394b5a4d3aea79acf3fadab97f8fa82a82
